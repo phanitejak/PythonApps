@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonblogdb
+  labels:
+    db: sonblogdb
+spec:
+  type: LoadBalancer
+  selector:
+      db: sonblogdb
+  ports:
+    - port: 33067
+      protocol: TCP
+      targetPort: 3306
+  externalIPs:
+    - 192.168.10.11

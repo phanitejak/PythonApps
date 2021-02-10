@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonblogdb
+  labels:
+    db: sonblogdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: sonblogdb
+  template:
+    metadata:
+      labels:
+        db: sonblogdb
+    spec:
+      containers:
+      - name: sonblogdb
+        image: mysql:5.7
+        ports:
+        - containerPort: 3306
+          name: mysqldb
+        volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: sonblogdb-storage
+        env:
+          - name: MYSQL_DATABASE
+            value: son_blog
+          - name: MYSQL_ROOT_PASSWORD
+            value: Phani_123
+          - name: MYSQL_USER
+            value: root
+          - name: MYSQL_PASSWORD
+            value: Phani_123
+      volumes:
+        - name: sonblogdb-storage
+          persistentVolumeClaim:
+            claimName: sonblogdb-storageclaim

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonblogapp
+  labels:
+    app: sonblogapp
+spec:
+  selector:
+      app: sonblogapp
+      db: sonblogdb
+  type: LoadBalancer
+  ports:
+    - port: 5000
+      protocol: TCP
+      targetPort: 5000
+  externalIPs:
+    - 192.168.10.10

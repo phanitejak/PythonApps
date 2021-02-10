@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonblogapp
+  labels:
+    app: sonblogapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonblogapp
+  template:
+    metadata:
+      labels:
+        app: sonblogapp
+    spec:
+      containers:
+      - name: sonblogapp
+        image: phanitejak/sonblogapp:latest
+        ports:
+        - containerPort: 5000
+        env:
+          - name: MYSQL_DB_HOST
+            value: sonblogdb

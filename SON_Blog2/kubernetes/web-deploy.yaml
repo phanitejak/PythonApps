@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonblogweb
+  labels:
+    web: sonblogweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      web: sonblogweb
+  template:
+    metadata:
+      labels:
+        web: sonblogweb
+    spec:
+      containers:
+      - name: sonblogweb
+        image: phanitejak/sonblogweb:latest
+        ports:
+        - containerPort: 80

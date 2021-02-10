@@ -9,9 +9,9 @@ services:
         ipv4_address: 172.20.10.6
     environment:
       - MYSQL_DATABASE=son_blog
-      - MYSQL_ROOT_PASSWORD=Shravs_143
+      - MYSQL_ROOT_PASSWORD=Phani_123
       - MYSQL_USER=root
-      - MYSQL_PASSWORD=Shravs_143
+      - MYSQL_PASSWORD=Phani_123
     volumes:
       - ./db_mount:/var/lib/mysql
     ports:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - mysqldb
     build: ./sonblog
-    command: 'python /home/sonblog/run.py'
+    command: 'python /home/run.py'
     container_name: sonblogapp
     restart: always
     networks:
